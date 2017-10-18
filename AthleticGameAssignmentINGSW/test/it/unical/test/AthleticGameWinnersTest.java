@@ -40,4 +40,14 @@ public class AthleticGameWinnersTest {
 		Assert.assertEquals("nich", game.getWinner());
 	}
 	
+	@Test
+	public void getWinnerWorks2(){
+		Instant arrival=Instant.now();
+		game.addArrival("ciccio", arrival);
+		game.addArrival("peppe", arrival.plusMillis(2000));
+		game.addArrival("zav", arrival.plusMillis(3000));
+		game.addArrival("nich", arrival);
+		Assert.assertNotEquals("peppe", game.getWinner());
+		Assert.assertNotEquals("zav", game.getWinner());
+	}
 }
